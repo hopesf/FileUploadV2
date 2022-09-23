@@ -63,12 +63,6 @@ const sendFiles = async () => {
 
   const json = await response.json();
 
-  const h2 = document.querySelector('h2');
-  h2.textContent = `status: ${json?.status}`;
-
-  const h3 = document.querySelector('h3');
-  h3.textContent = json?.message;
-
   console.log(json);
 };
 
