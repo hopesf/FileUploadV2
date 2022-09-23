@@ -30,7 +30,7 @@ Upstairs of this directory are the file/files uploaded in the "public_html/uploa
 
 ### Access Uploaded File
 
-```http
+```url
   GET /uploads/uploadedfilename.png
 ```
 
