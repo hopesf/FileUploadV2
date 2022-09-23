@@ -1,4 +1,7 @@
 
+# File Upload System V2
+
+
 
 
 <div align="center">
@@ -18,3 +21,67 @@
 </div>
 
 
+
+
+This project is a file upload system written in NodeJS.
+**It can be used by adapting to frameworks.**
+## API Usage
+
+### Upload Single/Multi File
+
+```http
+  POST /upload
+```
+
+| Parameters | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `body` | `formData` | You should convert the pictures you choose to formatta and send them as a post. |
+
+### HTML
+```html
+    <form id="uploadform" enctype="multipart/form-data">
+      <input type="file" id="myfiles" multiple />
+      <button>submit</button>
+    </form>
+```
+
+
+### Vanilla JS
+```js
+      const form = document.getElementById('uploadform');
+
+      const sendFiles = async () => {
+        const myFiles = document.getElementById('myfiles').files;
+        const formData = new FormData();
+
+        Object.keys(myFiles).forEach((key) => {
+          formData.append(myFiles.item(key).name, myFiles.item(key));
+        });
+
+        const response = await fetch('http://localhost:3100/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const json = await response.json();
+
+        const h2 = document.querySelector('h2');
+        h2.textContent = `status: ${json?.status}`;
+
+        const h3 = document.querySelector('h3');
+        h3.textContent = json?.message;
+
+        console.log(json);
+      };
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        sendFiles();
+      });
+
+```
+
+## License
+
+Released under [Apache-2.0 license](/LICENSE) by [@hopesf](https://github.com/hopesf).
