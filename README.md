@@ -20,7 +20,7 @@ Upstairs of this directory are the file/files uploaded in the "public_html/uploa
 
 ### Upload Single/Multi File
 
-```js
+```url
   POST /upload
 ```
 
